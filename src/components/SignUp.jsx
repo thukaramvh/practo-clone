@@ -1,6 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Stack, Heading, Text, Input, Button } from '@chakra-ui/react';
+import { signupUser } from '../service/signupUser';
+import { useAuth } from '../context/authContext';
 export default function SignUp() {
+  const [auth, setAuth] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
+  const { authDispatch } = useAuth();
+  function changeHandler(e) {
+    setAuth(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  }
   return (
     <Stack
       bg={'gray.50'}
@@ -32,6 +44,9 @@ export default function SignUp() {
       <Box as={'form'} mt={10}>
         <Stack spacing={4}>
           <Input
+            value={auth.firstName}
+            name="firstName"
+            onChange={changeHandler}
             placeholder="Firstname"
             bg={'gray.100'}
             border={0}
@@ -41,6 +56,9 @@ export default function SignUp() {
             }}
           />
           <Input
+            value={auth.lastName}
+            name="lastName"
+            onChange={changeHandler}
             placeholder="Lastname"
             bg={'gray.100'}
             border={0}
@@ -50,6 +68,9 @@ export default function SignUp() {
             }}
           />
           <Input
+            value={auth.email}
+            name="email"
+            onChange={changeHandler}
             placeholder="firstname@lastname.com"
             bg={'gray.100'}
             border={0}
@@ -59,6 +80,9 @@ export default function SignUp() {
             }}
           />
           <Input
+            value={auth.password}
+            name="password"
+            onChange={changeHandler}
             placeholder="*********"
             bg={'gray.100'}
             border={0}
@@ -69,6 +93,7 @@ export default function SignUp() {
           />
         </Stack>
         <Button
+          onClick={() => signupUser({ auth, authDispatch })}
           fontFamily={'heading'}
           mt={8}
           w={'full'}
