@@ -149,7 +149,7 @@ export default function Auth() {
           <Box as={'form'} mt={10}>
             <Stack spacing={4}>
               <Input
-                placeholder="Firstname"
+                placeholder="username"
                 bg={'gray.100'}
                 border={0}
                 color={'gray.500'}
@@ -167,7 +167,7 @@ export default function Auth() {
                 }}
               />
               <Input
-                placeholder="+1 (___) __-___-___"
+                placeholder="*******"
                 bg={'gray.100'}
                 border={0}
                 color={'gray.500'}
