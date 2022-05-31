@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Box, Stack, Heading, Text, Input, Button } from '@chakra-ui/react';
+import { useAuth } from '../context/authContext';
+import { loginUser } from './../service/loginUser';
 function Login() {
   const [auth, setAuth] = useState({ email: '', password: '' });
+  const { authDispatch, authState } = useAuth();
   function changeHandler(e) {
     setAuth(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
-  console.log(auth);
+  console.log(authState);
   return (
     <Stack
       bg={'gray.50'}
@@ -62,6 +65,7 @@ function Login() {
           />
         </Stack>
         <Button
+          onClick={() => loginUser({ auth, authDispatch })}
           fontFamily={'heading'}
           mt={8}
           w={'full'}

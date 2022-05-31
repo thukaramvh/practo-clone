@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from 'react';
 const authReducer = (state, { payload, type }) => {
+  console.log(payload);
   switch (type) {
     case 'LOGIN':
       return { ...state, user: payload.user, token: payload.token };
