@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Stack, Heading, Text, Input, Button } from '@chakra-ui/react';
 function Login() {
+  const [auth, setAuth] = useState({ email: '', password: '' });
+  function changeHandler(e) {
+    setAuth(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+  console.log(auth);
   return (
     <Stack
       bg={'gray.50'}
@@ -15,7 +20,7 @@ function Login() {
           lineHeight={1.1}
           fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}
         >
-          Join our team
+          Join our cause
           <Text
             as={'span'}
             bgGradient="linear(to-r, red.400,pink.400)"
@@ -25,22 +30,16 @@ function Login() {
           </Text>
         </Heading>
         <Text color={'gray.500'} fontSize={{ base: 'sm', sm: 'md' }}>
-          We’re looking for amazing engineers just like you! Become a part of
-          our rockstar engineering team and skyrocket your career!
+          Consult top doctors online for any health concern Private online
+          consultations with verified doctors in all specialists
         </Text>
       </Stack>
       <Box as={'form'} mt={10}>
         <Stack spacing={4}>
           <Input
-            placeholder="Firstname"
-            bg={'gray.100'}
-            border={0}
-            color={'gray.500'}
-            _placeholder={{
-              color: 'gray.500',
-            }}
-          />
-          <Input
+            name="email"
+            value={auth.email}
+            onChange={changeHandler}
             placeholder="firstname@lastname.io"
             bg={'gray.100'}
             border={0}
@@ -50,7 +49,10 @@ function Login() {
             }}
           />
           <Input
-            placeholder="+1 (___) __-___-___"
+            name="password"
+            value={auth.password}
+            onChange={changeHandler}
+            placeholder="*******"
             bg={'gray.100'}
             border={0}
             color={'gray.500'}
@@ -58,9 +60,6 @@ function Login() {
               color: 'gray.500',
             }}
           />
-          <Button fontFamily={'heading'} bg={'gray.200'} color={'gray.800'}>
-            Upload CV
-          </Button>
         </Stack>
         <Button
           fontFamily={'heading'}
@@ -73,7 +72,7 @@ function Login() {
             boxShadow: 'xl',
           }}
         >
-          Submit
+          Login
         </Button>
       </Box>
       form

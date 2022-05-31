@@ -52,10 +52,11 @@ export default function Auth() {
       >
         <Stack spacing={{ base: 10, md: 20 }}>
           <Heading
+            zIndex="1"
             lineHeight={1.1}
             fontSize={{ base: '3xl', sm: '4xl', md: '5xl', lg: '6xl' }}
           >
-            Senior web designers{' '}
+            Senior Doctors{' '}
             <Text
               as={'span'}
               bgGradient="linear(to-r, red.400,pink.400)"
@@ -63,7 +64,7 @@ export default function Auth() {
             >
               &
             </Text>{' '}
-            Full-Stack Developers
+            Professional Surgeons
           </Heading>
           <Stack direction={'row'} spacing={4} align={'center'}>
             <AvatarGroup>
@@ -121,7 +122,7 @@ export default function Auth() {
             </Flex>
           </Stack>
         </Stack>
-        <Tabs isFitted variant="enclosed">
+        <Tabs isFitted>
           <TabList mb="1em">
             <Tab>Login</Tab>
             <Tab>Sign Up</Tab>

@@ -15,7 +15,7 @@ export default function SignUp() {
           lineHeight={1.1}
           fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}
         >
-          Join our team
+          Join our cause
           <Text
             as={'span'}
             bgGradient="linear(to-r, red.400,pink.400)"
@@ -25,8 +25,8 @@ export default function SignUp() {
           </Text>
         </Heading>
         <Text color={'gray.500'} fontSize={{ base: 'sm', sm: 'md' }}>
-          We’re looking for amazing engineers just like you! Become a part of
-          our rockstar engineering team and skyrocket your career!
+          Consult top doctors online for any health concern Private online
+          consultations with verified doctors in all specialists
         </Text>
       </Stack>
       <Box as={'form'} mt={10}>
@@ -41,7 +41,7 @@ export default function SignUp() {
             }}
           />
           <Input
-            placeholder="firstname@lastname.io"
+            placeholder="Lastname"
             bg={'gray.100'}
             border={0}
             color={'gray.500'}
@@ -50,7 +50,7 @@ export default function SignUp() {
             }}
           />
           <Input
-            placeholder="+1 (___) __-___-___"
+            placeholder="firstname@lastname.com"
             bg={'gray.100'}
             border={0}
             color={'gray.500'}
@@ -58,9 +58,15 @@ export default function SignUp() {
               color: 'gray.500',
             }}
           />
-          <Button fontFamily={'heading'} bg={'gray.200'} color={'gray.800'}>
-            Upload CV
-          </Button>
+          <Input
+            placeholder="*********"
+            bg={'gray.100'}
+            border={0}
+            color={'gray.500'}
+            _placeholder={{
+              color: 'gray.500',
+            }}
+          />
         </Stack>
         <Button
           fontFamily={'heading'}
@@ -73,7 +79,7 @@ export default function SignUp() {
             boxShadow: 'xl',
           }}
         >
-          Submit
+          Sign Up
         </Button>
       </Box>
       form
