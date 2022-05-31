@@ -15,6 +15,8 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import Login from '../components/Login';
+import SignUp from '../components/SignUp';
 const avatars = [
   {
     name: 'Ryan Florence',
@@ -119,82 +121,20 @@ export default function Auth() {
             </Flex>
           </Stack>
         </Stack>
-        <Stack
-          bg={'gray.50'}
-          rounded={'xl'}
-          p={{ base: 4, sm: 6, md: 8 }}
-          spacing={{ base: 8 }}
-          maxW={{ lg: 'lg' }}
-        >
-          <Stack spacing={4}>
-            <Heading
-              color={'gray.800'}
-              lineHeight={1.1}
-              fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}
-            >
-              Join our team
-              <Text
-                as={'span'}
-                bgGradient="linear(to-r, red.400,pink.400)"
-                bgClip="text"
-              >
-                !
-              </Text>
-            </Heading>
-            <Text color={'gray.500'} fontSize={{ base: 'sm', sm: 'md' }}>
-              We’re looking for amazing engineers just like you! Become a part
-              of our rockstar engineering team and skyrocket your career!
-            </Text>
-          </Stack>
-          <Box as={'form'} mt={10}>
-            <Stack spacing={4}>
-              <Input
-                placeholder="username"
-                bg={'gray.100'}
-                border={0}
-                color={'gray.500'}
-                _placeholder={{
-                  color: 'gray.500',
-                }}
-              />
-              <Input
-                placeholder="firstname@lastname.io"
-                bg={'gray.100'}
-                border={0}
-                color={'gray.500'}
-                _placeholder={{
-                  color: 'gray.500',
-                }}
-              />
-              <Input
-                placeholder="*******"
-                bg={'gray.100'}
-                border={0}
-                color={'gray.500'}
-                _placeholder={{
-                  color: 'gray.500',
-                }}
-              />
-            </Stack>
-            <Button
-              fontFamily={'heading'}
-              mt={8}
-              w={'full'}
-              bgGradient="linear(to-r, red.400,pink.400)"
-              color={'white'}
-              _hover={{
-                bgGradient: 'linear(to-r, red.400,pink.400)',
-                boxShadow: 'xl',
-              }}
-            >
-              Log In
-            </Button>
-          </Box>
-          <Button fontFamily={'heading'} bg={'gray.200'} color={'gray.800'}>
-            Sign In
-          </Button>
-          form
-        </Stack>
+        <Tabs isFitted variant="enclosed">
+          <TabList mb="1em">
+            <Tab>Login</Tab>
+            <Tab>Sign Up</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <Login />
+            </TabPanel>
+            <TabPanel>
+              <SignUp />
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </Container>
       <Blur
         position={'absolute'}
