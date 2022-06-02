@@ -20,6 +20,7 @@ import { useFilter } from '../context/filterContext';
 function Medicine() {
   const [range, setRange] = useState([10, 5000]);
   const { filterDispatch, filterState } = useFilter();
+  console.log(filterState.rating === 2);
   return (
     <>
       <Navbar />
@@ -79,7 +80,7 @@ function Medicine() {
                 colorScheme="blue"
                 onChange={e => {
                   filterDispatch({
-                    type: 'babyCare',
+                    type: 'category',
                     payload: {
                       checked: e.target.checked,
                       category: 'babyCare',
@@ -100,7 +101,7 @@ function Medicine() {
               <RadioGroup>
                 <Stack direction="column">
                   <Radio
-                    value="High To Low"
+                    isChecked={filterState.rating === 4}
                     onChange={() => {
                       filterDispatch({ type: 'rating', payload: '4' });
                     }}
@@ -108,18 +109,18 @@ function Medicine() {
                     4 stars and above
                   </Radio>
                   <Radio
+                    isChecked={filterState.rating === 3}
                     onChange={() => {
                       filterDispatch({ type: 'rating', payload: '3' });
                     }}
-                    value="Low To High"
                   >
                     3 stars and above
                   </Radio>
                   <Radio
+                    isChecked={filterState.rating === 2}
                     onChange={() => {
                       filterDispatch({ type: 'rating', payload: '2' });
                     }}
-                    value="Low To High"
                   >
                     2 stars and above
                   </Radio>
