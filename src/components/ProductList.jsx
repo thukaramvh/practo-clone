@@ -58,7 +58,7 @@ function ProductList({ range }) {
   console.log(ratedList);
   return (
     <Box flexGrow="1" display="flex" flexWrap="wrap">
-      {categorizedList.map(item => {
+      {ratedList.map(item => {
         return <Card {...item} />;
       })}
     </Box>

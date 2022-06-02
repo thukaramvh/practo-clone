@@ -119,7 +119,7 @@ export default function Card({ title, imgSrc, inStock, price, rating }) {
           </Flex>
 
           <Flex justifyContent="space-between" alignContent="center">
-            <Rating rating={data.rating} numReviews={data.numReviews} />
+            <Rating rating={rating} numReviews={data.numReviews} />
             <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
               <Box as="span" color={'gray.600'} fontSize="lg">
                 ₹
