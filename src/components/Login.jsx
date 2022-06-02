@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Box, Stack, Heading, Text, Input, Button } from '@chakra-ui/react';
 import { useAuth } from '../context/authContext';
 import { loginUser } from './../service/loginUser';
+import { useNavigate } from 'react-router-dom';
 function Login() {
+  const navigate = useNavigate();
   const [auth, setAuth] = useState({ email: '', password: '' });
   const { authDispatch, authState } = useAuth();
   function changeHandler(e) {
@@ -53,6 +55,7 @@ function Login() {
           />
           <Input
             name="password"
+            type="password"
             value={auth.password}
             onChange={changeHandler}
             placeholder="*******"
@@ -65,7 +68,7 @@ function Login() {
           />
         </Stack>
         <Button
-          onClick={() => loginUser({ auth, authDispatch })}
+          onClick={() => loginUser({ auth, authDispatch, navigate })}
           fontFamily={'heading'}
           mt={8}
           w={'full'}
@@ -77,6 +80,25 @@ function Login() {
           }}
         >
           Login
+        </Button>
+        <Button
+          onClick={() =>
+            setAuth({
+              email: 'adarshbalika@gmail.com',
+              password: 'adarshBalika123',
+            })
+          }
+          fontFamily={'heading'}
+          mt={8}
+          w={'full'}
+          bgGradient="linear(to-r, red.400,pink.400)"
+          color={'white'}
+          _hover={{
+            bgGradient: 'linear(to-r, red.400,pink.400)',
+            boxShadow: 'xl',
+          }}
+        >
+          Login with Test Credentials
         </Button>
       </Box>
       form

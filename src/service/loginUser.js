@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-const loginUser = async ({ auth, authDispatch }) => {
+const loginUser = async ({ auth, authDispatch, navigate }) => {
   const response = await axios({
     method: 'POST',
     url: '/api/auth/login',
@@ -22,6 +22,7 @@ const loginUser = async ({ auth, authDispatch }) => {
       token: response.data.encodedToken,
     },
   });
+  navigate('/');
 };
 
 export { loginUser };
