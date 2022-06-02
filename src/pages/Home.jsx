@@ -18,6 +18,7 @@ import {
 import Navbar from '../components/Navbar';
 import { WithSpeechBubbles } from '../components/Testimonials';
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 const Feature = ({ text, icon, iconBg }) => {
   return (
     <Stack direction={'row'} align={'center'}>
@@ -68,18 +69,21 @@ export default function Home() {
                 />
               }
             >
-              <Feature
-                icon={
-                  <Icon
-                    as={IoAnalyticsSharp}
-                    color={'yellow.500'}
-                    w={5}
-                    h={5}
-                  />
-                }
-                iconBg={useColorModeValue('yellow.100', 'yellow.900')}
-                text={'Buy Medicine'}
-              />
+              <Link to="/medicine">
+                <Feature
+                  icon={
+                    <Icon
+                      as={IoAnalyticsSharp}
+                      color={'yellow.500'}
+                      w={5}
+                      h={5}
+                    />
+                  }
+                  iconBg={useColorModeValue('yellow.100', 'yellow.900')}
+                  text={'Buy Medicine'}
+                />
+              </Link>
+
               <Feature
                 icon={
                   <Icon as={IoLogoBitcoin} color={'green.500'} w={5} h={5} />
