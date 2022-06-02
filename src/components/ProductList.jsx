@@ -27,12 +27,38 @@ function ProductList({ range }) {
       });
     return product;
   }
+  function getCategory({ medicine, babyCare, protein }, products) {
+    let filteredList = [];
+    if (medicine)
+      filteredList = [
+        ...filteredList,
+        ...products.filter(product => product.categoryName === 'medicine'),
+      ];
+    if (protein)
+      filteredList = [
+        ...filteredList,
+        ...products.filter(product => product.categoryName === 'protein'),
+      ];
+    if (babyCare)
+      filteredList = [
+        ...filteredList,
+        ...products.filter(product => product.categoryName === 'babyCare'),
+      ];
+    if (!medicine && !babyCare && !protein) return products;
+    return filteredList;
+  }
+  function getRating({ rating }, product) {
+    return product.filter(product => product.rating >= rating);
+  }
+
   const rangeFilter = getRange();
   const sortedList = getSortedList(filterState, rangeFilter);
-  console.log(sortedList, 'sortedlist');
+  const categorizedList = getCategory(filterState, sortedList);
+  const ratedList = getRating(filterState, categorizedList);
+  console.log(ratedList);
   return (
     <Box flexGrow="1" display="flex" flexWrap="wrap">
-      {sortedList.map(item => {
+      {categorizedList.map(item => {
         return <Card {...item} />;
       })}
     </Box>

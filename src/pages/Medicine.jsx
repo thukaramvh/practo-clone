@@ -18,21 +18,21 @@ import {
 import ProductList from '../components/ProductList';
 import { useFilter } from '../context/filterContext';
 function Medicine() {
-  const [range, setRange] = useState([10, 60]);
-  const { filterDispatch } = useFilter();
+  const [range, setRange] = useState([10, 5000]);
+  const { filterDispatch, filterState } = useFilter();
   return (
     <>
       <Navbar />
       <Box display="flex" flexDirection="row" gap="4">
-        <Box pl="6" flexBasis="70%" minW="200px" pt="2">
+        <Box pl="6" minW="200px" pt="2">
           <Heading size="md" py="2">
             Price
           </Heading>
           <RangeSlider
-            max={500}
+            max={10000}
             onChangeEnd={val => setRange(val)}
             aria-label={['min', 'max']}
-            defaultValue={[10, 60]}
+            defaultValue={[10, 5000]}
           >
             <RangeSliderTrack>
               <RangeSliderFilledTrack />
@@ -45,13 +45,49 @@ function Medicine() {
               Category
             </Heading>
             <Stack spacing={3} direction="column">
-              <Checkbox colorScheme="red" defaultChecked>
+              <Checkbox
+                onChange={e => {
+                  filterDispatch({
+                    type: 'category',
+                    payload: {
+                      checked: e.target.checked,
+                      category: 'medicine',
+                    },
+                  });
+                }}
+                colorScheme="blue"
+                isChecked={filterState.medicine}
+              >
                 Medicine
               </Checkbox>
-              <Checkbox colorScheme="green" isChecked={true}>
-                Skin Care
+              <Checkbox
+                colorScheme="blue"
+                onChange={e => {
+                  filterDispatch({
+                    type: 'category',
+                    payload: {
+                      checked: e.target.checked,
+                      category: 'protein',
+                    },
+                  });
+                }}
+                isChecked={filterState.protein}
+              >
+                Gym Supplements
               </Checkbox>
-              <Checkbox colorScheme="green" isChecked={true}>
+              <Checkbox
+                colorScheme="blue"
+                onChange={e => {
+                  filterDispatch({
+                    type: 'babyCare',
+                    payload: {
+                      checked: e.target.checked,
+                      category: 'babyCare',
+                    },
+                  });
+                }}
+                isChecked={filterState.babyCare}
+              >
                 Baby Care
               </Checkbox>
             </Stack>
@@ -61,15 +97,34 @@ function Medicine() {
               Rating
             </Heading>
             <Stack spacing={3} direction="column">
-              <Checkbox colorScheme="red" defaultChecked>
-                4 stars
-              </Checkbox>
-              <Checkbox colorScheme="green" isChecked={true}>
-                3 stars
-              </Checkbox>
-              <Checkbox colorScheme="green" isChecked={true}>
-                2 stars
-              </Checkbox>
+              <RadioGroup>
+                <Stack direction="column">
+                  <Radio
+                    value="High To Low"
+                    onChange={() => {
+                      filterDispatch({ type: 'rating', payload: '4' });
+                    }}
+                  >
+                    4 stars and above
+                  </Radio>
+                  <Radio
+                    onChange={() => {
+                      filterDispatch({ type: 'rating', payload: '3' });
+                    }}
+                    value="Low To High"
+                  >
+                    3 stars and above
+                  </Radio>
+                  <Radio
+                    onChange={() => {
+                      filterDispatch({ type: 'rating', payload: '2' });
+                    }}
+                    value="Low To High"
+                  >
+                    2 stars and above
+                  </Radio>
+                </Stack>
+              </RadioGroup>
             </Stack>
           </Box>
           <Box>
