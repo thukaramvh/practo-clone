@@ -88,8 +88,8 @@ export function WithSpeechBubbles() {
     >
       <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
         <Stack spacing={0} align={'center'}>
-          <Heading>Our Clients Speak</Heading>
-          <Text>We have been working with clients around the world</Text>
+          <Heading>Our Customers Speak</Heading>
+          <Text>We have been working with customers around the world</Text>
         </Stack>
         <Stack
           direction={{ base: 'column', md: 'row' }}
@@ -97,50 +97,54 @@ export function WithSpeechBubbles() {
         >
           <Testimonial>
             <TestimonialContent>
-              <TestimonialHeading>Efficient Collaborating</TestimonialHeading>
+              <TestimonialHeading>Amazing Doctors</TestimonialHeading>
               <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-                neque sed imperdiet nibh lectus feugiat nunc sem.
+                Very helpful. Far easier than doing same things on computer.
+                Allows quick and easy search with speedy booking. Even maintains
+                history of doctors visited.
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
               src={
                 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
               }
-              name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
+              name={'Legolas'}
+              title={'CEO at Nothing'}
             />
           </Testimonial>
           <Testimonial>
             <TestimonialContent>
-              <TestimonialHeading>Intuitive Design</TestimonialHeading>
+              <TestimonialHeading>Helpful UI/UX</TestimonialHeading>
               <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-                neque sed imperdiet nibh lectus feugiat nunc sem.
+                Very easy to book,maintain history. Hassle free from older
+                versions of booking appointment via telephone.. Thanks Practo
+                for making it simple.
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
               src={
                 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
               }
-              name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
+              name={'Amit Sharma'}
+              title={'Happy Customer'}
             />
           </Testimonial>
           <Testimonial>
             <TestimonialContent>
               <TestimonialHeading>Mindblowing Service</TestimonialHeading>
               <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-                neque sed imperdiet nibh lectus feugiat nunc sem.
+                Very good app. Well thought out about
+                booking/rescheduling/canceling an appointment. Also, Doctor's
+                feedback mechanism is good and describes all the basics in a
+                good way
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
               src={
                 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
               }
-              name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
+              name={'Jake Barker'}
+              title={'CEO at Hooli'}
             />
           </Testimonial>
         </Stack>
