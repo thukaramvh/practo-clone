@@ -8,6 +8,7 @@ import {
   Icon,
   chakra,
   Tooltip,
+  Button,
 } from '@chakra-ui/react';
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 import { FiShoppingCart } from 'react-icons/fi';
@@ -67,7 +68,7 @@ export default function Card({ title, imgSrc, inStock, price, rating }) {
         shadow="lg"
         position="relative"
       >
-        {data.isNew && (
+        {!inStock && (
           <Circle
             size="10px"
             position="absolute"
@@ -89,9 +90,9 @@ export default function Card({ title, imgSrc, inStock, price, rating }) {
 
         <Box p="6">
           <Box d="flex" alignItems="baseline">
-            {data.isNew && (
+            {!inStock && (
               <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
-                New
+                Out Of Stock
               </Badge>
             )}
           </Box>
@@ -112,9 +113,9 @@ export default function Card({ title, imgSrc, inStock, price, rating }) {
               color={'gray.800'}
               fontSize={'1.2em'}
             >
-              <chakra.a href={'#'} display={'flex'}>
+              <Button bg="transparent" disabled={!inStock}>
                 <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
-              </chakra.a>
+              </Button>
             </Tooltip>
           </Flex>
 
