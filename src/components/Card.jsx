@@ -58,7 +58,7 @@ function Rating({ rating, numReviews }) {
 }
 const placeholderImg =
   'https://www.practostatic.com/ecommerce-assets/static/media/placeholder_product.39dd65c8.png';
-export default function Card({ title, imgSrc, inStock, price, rating }) {
+export default function Card({ title, imgSrc, inStock, price, rating, _id }) {
   const { authState } = useAuth();
   const { cartDispatch, cartState } = useCart();
   console.log(cartState.cart);
@@ -126,7 +126,7 @@ export default function Card({ title, imgSrc, inStock, price, rating }) {
                 onClick={() =>
                   addToCart({
                     token: authState.token,
-                    product: { title, imgSrc, inStock, price, rating },
+                    product: { title, imgSrc, inStock, price, rating, _id },
                     cartDispatch,
                   })
                 }

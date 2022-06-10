@@ -79,6 +79,7 @@ export const addItemToCartHandler = function (schema, request) {
 export const removeItemFromCartHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
   try {
+    console.log(userId);
     if (!userId) {
       new Response(
         404,
@@ -88,9 +89,12 @@ export const removeItemFromCartHandler = function (schema, request) {
         }
       );
     }
-    let userCart = schema.users.findBy({ _id: userId }).cart;
+
+    let userCart = schema.users.findBy({ _id: userId._id }).cart;
+    console.log('in ry');
     const productId = request.params.productId;
     userCart = userCart.filter(item => item._id !== productId);
+
     this.db.users.update({ _id: userId }, { cart: userCart });
     return new Response(200, {}, { cart: userCart });
   } catch (error) {
@@ -147,7 +151,7 @@ export const updateCartItemHandler = function (schema, request) {
         }
       );
     }
-    const userCart = schema.users.findBy({ _id: userId }).cart;
+    const userCart = schema.users.findBy({ _id: userId._id }).cart;
     const { action } = JSON.parse(request.requestBody);
     if (action.type === 'increment') {
       userCart.forEach(product => {
