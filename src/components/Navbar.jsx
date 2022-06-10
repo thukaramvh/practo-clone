@@ -16,6 +16,7 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react';
+import { FiShoppingCart } from 'react-icons/fi';
 import {
   HamburgerIcon,
   CloseIcon,
@@ -74,6 +75,9 @@ function Navbar() {
           direction={'row'}
           spacing={6}
         >
+          <Button bg="transparent">
+            <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+          </Button>
           <Button
             onClick={() => {
               navigate('/auth');

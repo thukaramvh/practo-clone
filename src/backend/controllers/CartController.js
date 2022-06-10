@@ -34,7 +34,11 @@ export const getCartItemsHandler = function (schema, request) {
 
 export const addItemToCartHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
+  const userCart = schema.users.findBy({ _id: userId });
+  console.log(schema);
+  console.log(userId);
   try {
+    console.log(userId);
     if (!userId) {
       new Response(
         404,
@@ -44,8 +48,10 @@ export const addItemToCartHandler = function (schema, request) {
         }
       );
     }
-    const userCart = schema.users.findBy({ _id: userId }).cart;
+    const userCart = schema.users.findBy({ _id: userId._id }).cart;
+    console.log(userCart, 'in 49');
     const { product } = JSON.parse(request.requestBody);
+    console.log(product, 'in 51');
     userCart.push({
       ...product,
       createdAt: formatDate(),
@@ -57,7 +63,7 @@ export const addItemToCartHandler = function (schema, request) {
   } catch (error) {
     return new Response(
       500,
-      {},
+      { dsad: 'dasd' },
       {
         error,
       }

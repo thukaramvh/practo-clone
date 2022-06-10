@@ -13,5 +13,6 @@ export const users = [
     lastName: 'Balika',
     email: 'adarshbalika@gmail.com',
     password: bcyrpt.hashSync('adarshBalika123', 5),
+    cart: [],
   },
 ];

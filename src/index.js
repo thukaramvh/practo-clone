@@ -10,6 +10,7 @@ import { AuthProvider } from './context/authContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ProductProvider } from './context/productContext';
 import { FilterProvider } from './context/filterContext';
+import { CartProvider } from './context/cartContext';
 // Call make Server
 makeServer();
 ReactDOM.render(
@@ -19,18 +20,20 @@ ReactDOM.render(
         <AuthProvider>
           <ProductProvider>
             <FilterProvider>
-              <App />
-              <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-              />
+              <CartProvider>
+                <App />
+                <ToastContainer
+                  position="top-right"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                />
+              </CartProvider>
             </FilterProvider>
           </ProductProvider>
         </AuthProvider>

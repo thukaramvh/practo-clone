@@ -11,8 +11,11 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
+import { AiOutlineArrowRight } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
-
+import { addToCart } from '../service/addToCart';
+import { useAuth } from '../context/authContext';
+import { useCart } from '../context/cartContext';
 const data = {
   isNew: true,
   imageURL:
@@ -56,6 +59,10 @@ function Rating({ rating, numReviews }) {
 const placeholderImg =
   'https://www.practostatic.com/ecommerce-assets/static/media/placeholder_product.39dd65c8.png';
 export default function Card({ title, imgSrc, inStock, price, rating }) {
+  const { authState } = useAuth();
+  const { cartDispatch, cartState } = useCart();
+  console.log(cartState.cart);
+  console.log(authState);
   return (
     <Flex p={4} w="300px" alignItems="center" justifyContent="center">
       <Box
@@ -113,8 +120,27 @@ export default function Card({ title, imgSrc, inStock, price, rating }) {
               color={'gray.800'}
               fontSize={'1.2em'}
             >
-              <Button bg="transparent" disabled={!inStock}>
-                <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+              <Button
+                bg="transparent"
+                disabled={!inStock}
+                onClick={() =>
+                  addToCart({
+                    token: authState.token,
+                    product: { title, imgSrc, inStock, price, rating },
+                    cartDispatch,
+                  })
+                }
+              >
+                {cartState.cart.some(item => item.title === title) ? (
+                  <Icon
+                    as={AiOutlineArrowRight}
+                    h={7}
+                    w={7}
+                    alignSelf={'center'}
+                  />
+                ) : (
+                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+                )}
               </Button>
             </Tooltip>
           </Flex>
