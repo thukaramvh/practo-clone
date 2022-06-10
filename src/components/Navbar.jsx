@@ -24,9 +24,11 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons';
 import { Navigate, useNavigate, NavLink } from 'react-router-dom';
+import { useAuth } from '../context/authContext';
 
 function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+  const { authState } = useAuth();
   const navigate = useNavigate();
   return (
     <Box>
@@ -74,9 +76,15 @@ function Navbar() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}
+          alignItems="flex-end"
         >
           <NavLink to="/cart">
-            <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+            <div className="badge">
+              {<FiShoppingCart fontSize="27px" />}
+              <div className="badge-number">
+                {authState.token ? cartState.cart.length : 0}
+              </div>
+            </div>
           </NavLink>
 
           <Button
