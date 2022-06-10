@@ -19,6 +19,7 @@ import ProductList from '../components/ProductList';
 import { useFilter } from '../context/filterContext';
 function Medicine() {
   const [range, setRange] = useState([10, 5000]);
+  const [minmax, setMinmax] = useState([10, 5000]);
   const { filterDispatch, filterState } = useFilter();
   console.log(filterState.rating === 2);
   return (
@@ -34,6 +35,7 @@ function Medicine() {
             onChangeEnd={val => setRange(val)}
             aria-label={['min', 'max']}
             defaultValue={[10, 5000]}
+            onChange={value => setMinmax(value)}
           >
             <RangeSliderTrack>
               <RangeSliderFilledTrack />
@@ -41,6 +43,9 @@ function Medicine() {
             <RangeSliderThumb index={0} />
             <RangeSliderThumb index={1} />
           </RangeSlider>
+          <Box>
+            {minmax[0]} - {minmax[1]}
+          </Box>
           <Box>
             <Heading size="md" py="2">
               Category

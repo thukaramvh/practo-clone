@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth } from '../context/authContext';
 import { useCart } from '../context/cartContext';
-import axios from 'axios';
+import { Button } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 const getTotalPrice = cartList => {
   if (cartList.length === 0) return 0;
@@ -70,30 +70,56 @@ function CartSummary() {
       {cartState.cart.length === 0 ? (
         true
       ) : (
-        // <NoItemFound component="cart" />
-        <div className="cart-summary">
+        <div
+          style={{
+            border: '1px solid black',
+            padding: '10px',
+            borderRadius: '5px',
+            height: 'min-content',
+            top: '10px',
+            position: 'sticky',
+          }}
+        >
           <h2>Price Details</h2>
-          <div className="price">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              padding: '10px',
+            }}
+          >
             <p>Price</p>
             <p>₹ {getTotalPrice(cartState.cart)}</p>
           </div>
 
-          <div className="delivery">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              padding: '10px',
+            }}
+          >
             <p>Delivery Charges</p>
             <p>₹ 499</p>
           </div>
-          <div className="total-amount">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              padding: '10px',
+            }}
+          >
             <p>Total Amount</p>
             <p>₹ {199 + getTotalPrice(cartState.cart)}</p>
           </div>
-          <button
+          <Button
             className="btn primary-btn"
             onClick={() => {
               payHandler();
             }}
           >
             Place Order
-          </button>
+          </Button>
         </div>
       )}
     </>

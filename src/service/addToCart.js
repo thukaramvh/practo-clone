@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
 async function addToCart({ product, token, cartDispatch }) {
   try {
     const response = await axios({
