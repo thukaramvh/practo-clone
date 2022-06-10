@@ -13,7 +13,7 @@ export const NoItemFound = ({ component }) => {
         items to your {component}
       </p>
       <div className="center">
-        <Link to="/product">
+        <Link to="/medicine">
           <button className="btn primary-btn">Back To Menu</button>
         </Link>
       </div>

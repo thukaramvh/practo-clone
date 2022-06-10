@@ -4,6 +4,8 @@ const authReducer = (state, { payload, type }) => {
   switch (type) {
     case 'LOGIN':
       return { ...state, user: payload.user, token: payload.token };
+    case 'LOGOUT':
+      return { user: null, token: null };
     case 'SIGNUP':
       return { ...state, user: payload.user, token: payload.token };
     default:

@@ -25,10 +25,11 @@ import {
 } from '@chakra-ui/icons';
 import { Navigate, useNavigate, NavLink } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
-
+import { useCart } from './../context/cartContext';
 function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
-  const { authState } = useAuth();
+  const { authState, authDispatch } = useAuth();
+  const { cartState } = useCart();
   const navigate = useNavigate();
   return (
     <Box>
@@ -86,23 +87,42 @@ function Navbar() {
               </div>
             </div>
           </NavLink>
-
-          <Button
-            onClick={() => {
-              navigate('/auth');
-            }}
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'pink.400'}
-            href={'#'}
-            _hover={{
-              bg: 'pink.300',
-            }}
-          >
-            Login
-          </Button>
+          {authState.token === null ? (
+            <Button
+              onClick={() => {
+                navigate('/auth');
+              }}
+              display={{ base: 'none', md: 'inline-flex' }}
+              fontSize={'sm'}
+              fontWeight={600}
+              color={'white'}
+              bg={'pink.400'}
+              href={'#'}
+              _hover={{
+                bg: 'pink.300',
+              }}
+            >
+              Login
+            </Button>
+          ) : (
+            <Button
+              onClick={() => {
+                authDispatch({ type: 'LOGOUT' });
+                navigate('/auth');
+              }}
+              display={{ base: 'none', md: 'inline-flex' }}
+              fontSize={'sm'}
+              fontWeight={600}
+              color={'white'}
+              bg={'pink.400'}
+              href={'#'}
+              _hover={{
+                bg: 'pink.300',
+              }}
+            >
+              Logout
+            </Button>
+          )}
         </Stack>
       </Flex>
 
