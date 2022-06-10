@@ -23,7 +23,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, NavLink } from 'react-router-dom';
 
 function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -75,9 +75,10 @@ function Navbar() {
           direction={'row'}
           spacing={6}
         >
-          <Button bg="transparent">
+          <NavLink to="/cart">
             <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
-          </Button>
+          </NavLink>
+
           <Button
             onClick={() => {
               navigate('/auth');
