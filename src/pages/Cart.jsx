@@ -2,6 +2,7 @@ import React from 'react';
 import LandscapeCard from './../components/LandscapeCard';
 import Navbar from '../components/Navbar';
 import './Cart.css';
+import CartSummary from '../components/CartSummary';
 // import CartSummary from './components/CartSummary/CartSummary';
 import { useCart } from './../context/cartContext';
 function Cart() {
@@ -27,7 +28,7 @@ function Cart() {
               );
             })}
           </div>
-          {/* <CartSummary /> */}
+          <CartSummary />
         </div>
       </main>
     </>
