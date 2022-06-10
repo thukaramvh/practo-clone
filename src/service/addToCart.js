@@ -10,7 +10,15 @@ async function addToCart({ product, token, cartDispatch }) {
     });
     cartDispatch({ type: 'ADD_TO_CART', payload: response.data.cart });
   } catch (err) {
-    console.log(err.response);
+    toast.error(`Please Login to access this feature`, {
+      position: 'top-right',
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
 }
 

@@ -114,7 +114,11 @@ export default function Card({ title, imgSrc, inStock, price, rating, _id }) {
               {title.length > 30 ? title.slice(0, 10) : title}...
             </Box>
             <Tooltip
-              label="Add to cart"
+              label={
+                cartState.cart.some(item => item.title === title)
+                  ? 'Go To Cart'
+                  : 'Add To Cart'
+              }
               bg="white"
               placement={'top'}
               color={'gray.800'}

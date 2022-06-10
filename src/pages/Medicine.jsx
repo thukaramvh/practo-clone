@@ -155,16 +155,6 @@ function Medicine() {
               </RadioGroup>
             </Stack>
           </Box>
-          <Box>
-            <Heading size="md" py="2">
-              Availability
-            </Heading>
-            <Stack spacing={3} direction="column">
-              <Checkbox colorScheme="red" defaultChecked>
-                Exclude Out Of Stock
-              </Checkbox>
-            </Stack>
-          </Box>
         </Box>
 
         <ProductList range={range} />
